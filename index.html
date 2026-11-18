@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#121c29" />
+  <meta name="description" content="A self-paced Premiere Pro learning dashboard: watch, practice, and track your progress." />
+  <title>Edit Lab — Premiere Pro learning studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./data.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="Course navigation">
+      <div class="brand"><div class="brand-symbol">E<span>/</span>L</div><div><b>EDIT LAB</b><small>THE PREMIERE PROJECT</small></div></div>
+      <div class="sidebar-kicker">YOUR CURRICULUM <span>01—08</span></div>
+      <nav id="week-nav" aria-label="Choose a week"></nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-progress-top"><span>Course progress</span><b id="sidebar-percent">0%</b></div>
+        <div class="progress-track"><span id="sidebar-progress"></span></div>
+        <p>Your work is saved on this device. Export a backup to move between browsers.</p>
+        <button class="sidebar-action" type="button" data-action="export">↥ &nbsp; Export progress</button>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" id="menu-toggle" aria-label="Open weeks menu" aria-expanded="false">☰</button>
+        <div class="breadcrumb"><span>WORKSPACE</span><span class="chevron">/</span><strong id="breadcrumb-week">WEEK 01</strong></div>
+        <div class="top-actions">
+          <button class="quiet-button" type="button" data-action="search-focus" title="Search lessons">⌕ <span>Find a lesson</span></button>
+          <button class="quiet-button" type="button" data-action="import" title="Import a saved backup">↧ <span>Import</span></button>
+          <button class="quiet-button" type="button" data-action="export" title="Export progress">↥ <span>Export</span></button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-mark"></span> A PRACTICAL EDITING CURRICULUM <span class="eyebrow-divider">/</span> 8 WEEKS</div>
+            <h1>Get better<br />in the <em>edit.</em></h1>
+            <p>Less tutorial-hopping. More deliberate practice. A structured route to faster cuts, cleaner audio, confident color, and better masks.</p>
+            <div class="hero-buttons"><button type="button" class="primary-btn" data-action="continue">Continue learning <span>↗</span></button><button type="button" class="ghost-btn" data-action="overview">View all weeks <span>↓</span></button></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-art-top"><span>EDIT SESSION_</span><span>24 FPS</span></div>
+            <div class="frame-grid"><div class="frame one"></div><div class="frame two"></div><div class="frame three"></div><div class="frame four"></div></div>
+            <div class="timeline-ruler"><span>00:00:00</span><span>00:00:15</span><span>00:00:30</span></div>
+            <div class="timeline-row"><i class="clip clip-a"></i><i class="clip clip-b"></i><i class="clip clip-c"></i><i class="clip clip-d"></i></div>
+            <div class="timeline-row alt"><i class="clip clip-e"></i><i class="clip clip-f"></i><i class="clip clip-g"></i></div>
+            <div class="playhead"></div>
+            <div class="hero-art-footer"><span>PROJECT: THE NEXT CUT</span><span>● REC / LEARN</span></div>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="Progress overview">
+          <div class="stat"><span>LESSONS WATCHED</span><div><b id="stats-lessons">0</b><small id="stats-lessons-total">/ 0</small></div></div>
+          <div class="stat"><span>ASSIGNMENTS DONE</span><div><b id="stats-assignments">0</b><small>/ 8</small></div></div>
+          <div class="stat"><span>WEEKS COMPLETED</span><div><b id="stats-weeks">0</b><small>/ 8</small></div></div>
+          <div class="stat stat-accent"><span>OVERALL PROGRESS</span><div><b id="stats-overall">0%</b><span class="stat-arrow">↗</span></div></div>
+        </section>
+
+        <section class="weeks-overview hidden" id="weeks-overview" aria-label="All weeks">
+          <div class="section-titlebar"><div><span class="label-overline">THE ROADMAP</span><h2>Eight weeks. Four disciplines.</h2></div><button type="button" class="text-button" data-action="overview">Close overview ×</button></div>
+          <div id="overview-grid" class="overview-grid"></div>
+        </section>
+
+        <section class="workspace" id="workspace">
+          <div class="section-titlebar week-titlebar">
+            <div><div class="label-overline" id="week-label">WEEK 01 / EDITING EFFICIENCY</div><h2 id="week-title">Fast hands, clean cuts.</h2><p id="week-desc" class="section-subtitle"></p></div>
+            <div class="week-pager"><button type="button" class="pager" data-action="previous" aria-label="Previous week">←</button><span id="page-numbers">01 / 08</span><button type="button" class="pager" data-action="next" aria-label="Next week">→</button></div>
+          </div>
+          <div class="workspace-grid">
+            <div class="learning-col">
+              <div class="watchlist-header"><div><h3>Watchlist <span id="watch-count"></span></h3><p>Watch in order, then use what you've learned.</p></div><label class="unwatched-label"><input type="checkbox" id="unwatched-toggle"/> Only unwatched</label></div>
+              <div id="lesson-list" class="lesson-list"></div>
+              <button type="button" class="add-lesson" data-action="add-video">+ Add your own YouTube lesson</button>
+              <section class="assignment-card" id="assignment-card" aria-labelledby="assignment-title"></section>
+              <section class="resources" id="resources"></section>
+            </div>
+            <div class="study-col">
+              <div class="player-card" id="player-card">
+                <div class="player-topline"><span><i class="live-dot"></i> THE VIEWING ROOM</span><span id="player-position">01 / 03</span></div>
+                <div id="player-stage" class="player-stage"></div>
+                <div class="player-information"><span id="player-eyebrow" class="label-overline"></span><h3 id="player-title"></h3><p id="player-desc"></p><div class="player-buttons"><button class="primary-btn small" id="player-mark" type="button" data-action="mark-video">✓ Mark as watched</button><a id="youtube-link" href="#" target="_blank" rel="noopener noreferrer" class="youtube-link">Open on YouTube ↗</a></div></div>
+              </div>
+              <div class="notes-card"><div class="notes-title"><div><span class="label-overline">FIELD NOTES</span><h3>What stuck?</h3></div><span id="save-status">Saved locally</span></div><p>Shortcuts to remember, problems to revisit, things you want to try on a real edit.</p><textarea id="week-notes" aria-label="Notes for this week" placeholder="A shortcut I keep forgetting…&#10;An audio technique to test…&#10;Something to practice next time…"></textarea></div>
+              <div class="tip-card" id="tip-card"></div>
+            </div>
+          </div>
+        </section>
+        <footer><span>EDIT LAB © 2026 <span class="footer-divider">/</span> BUILT FOR PRACTICE, NOT PERFECTION.</span><span>NO ACCOUNT NEEDED · PROGRESS STAYS IN YOUR BROWSER</span></footer>
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="add-dialog" aria-labelledby="add-dialog-title"><form method="dialog" id="add-form"><div class="dialog-top"><div><span class="label-overline">PERSONALIZE YOUR COURSE</span><h2 id="add-dialog-title">Add a lesson</h2></div><button type="button" class="dialog-close" data-action="close-dialog" aria-label="Close dialog">×</button></div><p>Add any public YouTube video to this week's watchlist.</p><label>Video title<input id="custom-title" type="text" maxlength="120" placeholder="e.g. Color matching practice" required /></label><label>YouTube link<input id="custom-url" type="url" placeholder="https://www.youtube.com/watch?v=…" required /></label><p id="add-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="ghost-btn" data-action="close-dialog">Cancel</button><button class="primary-btn" type="submit" value="add">Add lesson ↗</button></div></form></dialog>
+  <input type="file" id="import-input" accept="application/json,.json" hidden />
+</body>
+</html>
